@@ -30,7 +30,8 @@ mongodb run
     $./mongod
 
 
-db seed 
+(kinda)db seed 
+
     $mongo
     >use cryptocurrency;
     >db.list.insert({
@@ -41,7 +42,9 @@ db seed
         algorithm: 'SHA-256'
     });
     
-pick up data from mongodb
+
+pick up data from mongodb with app.py
+
     #this is import pymongo driver
     from pymongo import MongoClient # Database connector
     
