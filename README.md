@@ -41,3 +41,24 @@ db seed
         algorithm: 'SHA-256'
     });
     
+pick up data from mongodb
+    #this is import pymongo driver
+    from pymongo import MongoClient # Database connector
+    
+    #select mongodb location
+    client = MongoClient('localhost', 27017)    #Configure the connection to the database
+
+    #select db
+    db = client.cryptocurrency
+
+    #select collection
+    collist = db.list
+
+    this is how to pick up data from mongodb
+    @app.route('/<currency>')
+    def currency(currency):
+    	currency = collist.find_one({'name': currency})
+    	name = currency['name']
+    	symbol = currency['symbol']
+    	return render_template('currency.html', currency=currency, name=name, symbol=symbol)
+
