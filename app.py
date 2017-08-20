@@ -13,10 +13,11 @@ title = "default title"
 heading = "default heading"
 #modify=ObjectId()
 
-
 @app.route('/')
 def route():
-	return render_template('index.html', title=title, heading=heading)
+	currency = collist.find();
+	return render_template('index.html', title=title, heading=heading, currency=currency)
+	
 
 @app.route('/list')
 def lists():
@@ -26,12 +27,11 @@ def lists():
 
 @app.route('/<currency>')
 def currency(currency):
-	currency = collist.find_one({'name': currency})
+	currency = collist.find_one({'symbol': currency})
 	name = currency['name']
 	symbol = currency['symbol']
-	return render_template('currency.html', currency=currency, name=name, symbol=symbol)
-
-
+	algorithm = currency['algorithm']
+	return render_template('currency.html', currency=currency, name=name, symbol=symbol, algorithm=algorithm)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)

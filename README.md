@@ -19,7 +19,6 @@ db structure
             hight = 1100
             low = 900
             close = 1050
-        
 
 mongodb run
 
