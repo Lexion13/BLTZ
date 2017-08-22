@@ -1,12 +1,15 @@
 {% extends "layout.html" %}
 {% block body %}
-{{currency}}
+<div class="container">
+    <div class="row">
 
-{{name}}
+        {{currency['name']}}
 
-{{symbol}}
+        {{currency['image']}}
 
+        {{currency['symbol']}}
 
+    </div>
+</div>
 <div id="container" style="height: 400px; min-width: 310px"></div>
-
 {% endblock %}

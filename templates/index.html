@@ -8,7 +8,7 @@ title desuyo-
     <div class="row">
         {% for c in currency %}
         <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="rounded-circle" src="/static/images/{{c['image']}}" alt="{{c['name']}}" width="140" height="140">
             <h2>{{ c["name"] }}</h2>
             <h3>{{ c["symbol"] }}</h3>
             <p>{{ c["description"] }}</p>

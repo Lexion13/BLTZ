@@ -29,6 +29,15 @@ mongodb run
     $./mongod
 
 
+mongodb export as csv
+
+    examples
+    $mongoexport --db fd --csv --collection port --out export.csv --fields _id,symbol,name,algorithm
+    if you wanna export cryptocurrency list collections.
+    $mongoexport --db cryptocurrency --csv --collection list --out export.csv --fields _id,symbol,name,algorithm
+    if you wanna import cryptocurrency list collections.
+    $mongoimport -d cryptocurrency -c list --type csv --file import.csv --headerline
+
 (kinda)db seed 
 
     $mongo
@@ -46,7 +55,6 @@ pick up data from mongodb with app.py
 
     #this is import pymongo driver
     from pymongo import MongoClient # Database connector
-    
     #select mongodb location
     client = MongoClient('localhost', 27017)    #Configure the connection to the database
 
