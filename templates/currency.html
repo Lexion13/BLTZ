@@ -10,7 +10,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
             selected: 1
         },
         title: {
-            text: 'AAPL Stock Price'
+            text: "{{currency['symbol']}} Chart"
         },
         series: [{
             type: 'candlestick',
@@ -35,16 +35,32 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
 </script>
 <div class="container">
     <div class="row">
-
-        {{currency['name']}}
-
-        {{currency['image']}}
-
-        {{currency['symbol']}}
-        {{pricedata}}
-        {{histoday}}
-
+        <div class="col-xs-12 col-4">
+            <img src="/static/images/{{currency['image']}}" width="40" height="40" class="d-inline coin-image">
+            <h1 class="d-inline">{{currency['name']}}</h1>
+        </div>
+        <div class="col-xs-12 col-8">
+            <dl class="row">
+                <dt class="col-sm-5">コード</dt>
+                <dd class="col-sm-7">{{currency['symbol']}}</dd>
+                <dt class="col-sm-5">最終取引価格</dt>
+                <dd class="col-sm-7">000</dd>
+                <dt class="col-sm-5">高値（24h）</dt>
+                <dd class="col-sm-7">000</dd>
+                <dt class="col-sm-5">安値（24h）</dt>
+                <dd class="col-sm-7">000</dd>
+                <dt class="col-sm-5">出来高</dt>
+                <dd class="col-sm-7">000</dd>
+                <dt class="col-sm-5">マーケットキャップ</dt>
+                <dd class="col-sm-7">000</dd>
+            </dl>
+        </div>
     </div>
 </div>
-<div id="container" style="height: 400px; min-width: 310px"></div>
+<div class="container">
+    <div class="row">
+        <div id="container" style="height: 400px; min-width: 310px"></div>
+    </div>
+</div>
+
 {% endblock %}

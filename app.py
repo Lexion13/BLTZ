@@ -41,7 +41,7 @@ def currency(currency):
 	pricedata_json = json.loads(pricedata.text)
 	data = pricedata_json["Data"]
 	for e in data:
-		ti = e["time"]*0.0001
+		ti = e["time"]*1000 #I don't know why... but this plugin says that...
 		op = e["open"]
 		hi = e["high"]
 		lo = e["low"]
@@ -49,6 +49,11 @@ def currency(currency):
 		vf = e["volumefrom"]
 		vt = e["volumeto"]
 		histoday.append([ti,op,hi,lo,cl])
+	'''
+	Get current price
+	'''
+	api = ""
+	
 
 	currency = collist.find_one({'symbol': currency})
 	return render_template('currency.html', currency=currency,histoday=histoday)
