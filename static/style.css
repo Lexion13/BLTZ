@@ -10,3 +10,10 @@
 .coin-image{
     vertical-align: bottom;
 }
+#basic-information dl dt,
+#basic-information dl dd{
+    border-top: 1px solid #555;
+    line-height: 1rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}

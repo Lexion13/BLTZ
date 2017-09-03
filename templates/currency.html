@@ -35,31 +35,81 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
 </script>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-4">
+        <div class="col-12">
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-block t-center">
             <img src="/static/images/{{currency['image']}}" width="40" height="40" class="d-inline coin-image">
             <h1 class="d-inline">{{currency['name']}}</h1>
         </div>
-        <div class="col-xs-12 col-8">
-            <dl class="row">
-                <dt class="col-sm-5">コード</dt>
-                <dd class="col-sm-7">{{currency['symbol']}}</dd>
-                <dt class="col-sm-5">最終取引価格</dt>
-                <dd class="col-sm-7">000</dd>
-                <dt class="col-sm-5">高値（24h）</dt>
-                <dd class="col-sm-7">000</dd>
-                <dt class="col-sm-5">安値（24h）</dt>
-                <dd class="col-sm-7">000</dd>
-                <dt class="col-sm-5">出来高</dt>
-                <dd class="col-sm-7">000</dd>
-                <dt class="col-sm-5">マーケットキャップ</dt>
-                <dd class="col-sm-7">000</dd>
-            </dl>
-        </div>
     </div>
 </div>
+
 <div class="container">
     <div class="row">
         <div id="container" style="height: 400px; min-width: 310px"></div>
+    </div>
+</div>
+
+<div class="container">
+
+
+    <div class="row" id="basic-information">
+        <div class="col-xs-12 col-6">
+            <h2>{{currency['name']}}情報</h2>
+            <dl class="row no-gutters">
+                <dt class="col-sm-5">コード</dt>
+                <dd class="col-sm-7">{{currency['symbol']}}</dd>
+                <dt class="col-sm-5">アルゴリズム(Algorithm)</dt>
+                <dd class="col-sm-7">{{currency['symbol']}}</dd>
+                <dt class="col-sm-5">開始日</dt>
+                <dd class="col-sm-7">a</dd>
+                <dt class="col-sm-5">承認方式(Proof of type)</dt>
+                <dd class="col-sm-7">a</dd>
+                <dt class="col-sm-5">採掘難易度の調整頻度(Difficulty Adjustment)</dt>
+                <dd class="col-sm-7">Block</dd>
+                <dt class="col-sm-5">採掘報酬減少率(Block reward reduction)</dt>
+                <dd class="col-sm-7">a</dd>
+                <dt class="col-sm-5">ブロックタイム(Block Time)</dt>
+                <dd class="col-sm-7">ハッシュレート/秒(Hashrate/s)</dd>
+                <dt class="col-sm-5">H/S</dt>
+                <dd class="col-sm-7">a</dd>
+                <dt class="col-sm-5">ブロック報酬(BlockReward)</dt>
+                <dd class="col-sm-7">BlockReward</dd>
+                <dt class="col-sm-5">現在のコイン総量(TotalCoinsMined)</dt>
+                <dd class="col-sm-7">a</dd>
+                <dt class="col-sm-5">コイン供給上限(TotalCoinSupply)</dt>
+                <dd class="col-sm-7">a</dd>
+            </dl>
+        </div>
+        <div class="col-xs-12 col-6">
+            <h2>{{currency['name']}}通貨情報</h2>
+            <dl class="row no-gutters ">
+                <dt class="col-sm-5">コード</dt>
+                <dd class="col-sm-7">{{currency['symbol']}}</dd>
+                <dt class="col-sm-5">コード</dt>
+                <dd class="col-sm-7">{{current_price_data_json}}</dd>
+                <dt class="col-sm-5">コード</dt>
+                <dd class="col-sm-7">{{current_price_api_url}}</dd>
+                <dt class="col-sm-5">最終取引価格(&yen;)</dt>
+                <dd class="col-sm-7">&yen;&nbsp;{{current_price_JPY}}</dd>
+                <dt class="col-sm-5">最終取引価格($)</dt>
+                <dd class="col-sm-7">$&nbsp;{{current_price_USD}}</dd>
+                <dt class="col-sm-5">最終取引価格(&euro;)</dt>
+                <dd class="col-sm-7">&euro;&nbsp;{{current_price_EUR}}</dd>
+                <dt class="col-sm-5">始値（24h）</dt>
+                <dd class="col-sm-7">&yen;&nbsp;OPEN24HOUR</dd>
+                <dt class="col-sm-5">高値（24h）</dt>
+                <dd class="col-sm-7">&yen;&nbsp;HIGH24HOUR</dd>
+                <dt class="col-sm-5">安値（24h）</dt>
+                <dd class="col-sm-7">&yen;&nbsp;LOW24HOUR</dd>
+                <dt class="col-sm-5">出来高(24h)</dt>
+                <dd class="col-sm-7">VOLUME24HOURTO</dd>
+                <dt class="col-sm-5">時価総額(Market Capitalization)</dt>
+                <dd class="col-sm-7">000</dd>
+            </dl>
+        </div>
     </div>
 </div>
 

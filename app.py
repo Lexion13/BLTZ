@@ -33,13 +33,13 @@ def currency(currency):
 	
 	'''
 	histoday = []
-	api = "https://min-api.cryptocompare.com/data/histoday?fsym={fsym}&tsym=USD&limit={limit}&aggregate=3&e=CCCAGG"
+	histo_api = "https://min-api.cryptocompare.com/data/histoday?fsym={fsym}&tsym=USD&limit={limit}&aggregate=3&e=CCCAGG"
 	fsym = currency
 	limit = '60'
-	url = api.format(fsym=fsym, limit=limit)
-	pricedata = requests.get(url)
-	pricedata_json = json.loads(pricedata.text)
-	data = pricedata_json["Data"]
+	histo_api_url = histo_api.format(fsym=fsym, limit=limit)
+	histo_data = requests.get(histo_api_url)
+	histo_data_json = json.loads(histo_data.text)
+	data = histo_data_json["Data"]
 	for e in data:
 		ti = e["time"]*1000 #I don't know why... but this plugin says that...
 		op = e["open"]
@@ -52,11 +52,28 @@ def currency(currency):
 	'''
 	Get current price
 	'''
-	api = ""
-	
-
+	current_price_api = "https://min-api.cryptocompare.com/data/pricemulti?fsyms={fsym}&tsyms={tsyms}"
+	fsym = currency
+	tsyms = "JPY,BTC,USD,EUR"
+	current_price_api_url = current_price_api.format(fsym=fsym, tsyms=tsyms)
+	current_price_data = requests.get(current_price_api_url)
+	current_price_data_json = json.loads(current_price_data.text)
+	current_price_data_json = current_price_data_json[currency]
+	current_price_JPY = current_price_data_json['JPY']
+#	current_price_BTC = current_price_data_json['BTC']
+	current_price_USD = current_price_data_json['USD']
+	current_price_EUR = current_price_data_json['EUR']
 	currency = collist.find_one({'symbol': currency})
-	return render_template('currency.html', currency=currency,histoday=histoday)
+	return render_template('currency.html',
+			currency=currency,
+			histoday=histoday,
+			current_price_data_json=current_price_data_json,
+			current_price_api_url=current_price_api_url,
+			current_price_data=current_price_data,
+			current_price_JPY=current_price_JPY,
+#			current_price_BTC=current_price_BTC,
+			current_price_USD=current_price_USD,
+			current_price_EUR=current_price_EUR)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)
