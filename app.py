@@ -27,14 +27,15 @@ def lists():
 
 @app.route('/<currency>')
 def currency(currency):
+	currency = collist.find_one({'symbol': currency})
 
 	'''
 	Get price histo
-	
+
 	'''
 	histoday = []
 	histo_api = "https://min-api.cryptocompare.com/data/histoday?fsym={fsym}&tsym=USD&limit={limit}&aggregate=3&e=CCCAGG"
-	fsym = currency
+	fsym = currency['symbol']
 	limit = '60'
 	histo_api_url = histo_api.format(fsym=fsym, limit=limit)
 	histo_data = requests.get(histo_api_url)
@@ -49,31 +50,25 @@ def currency(currency):
 		vf = e["volumefrom"]
 		vt = e["volumeto"]
 		histoday.append([ti,op,hi,lo,cl])
+
+
 	'''
-	Get current price
+	Get information.
 	'''
-	current_price_api = "https://min-api.cryptocompare.com/data/pricemulti?fsyms={fsym}&tsyms={tsyms}"
-	fsym = currency
-	tsyms = "JPY,BTC,USD,EUR"
-	current_price_api_url = current_price_api.format(fsym=fsym, tsyms=tsyms)
-	current_price_data = requests.get(current_price_api_url)
-	current_price_data_json = json.loads(current_price_data.text)
-	current_price_data_json = current_price_data_json[currency]
-	current_price_JPY = current_price_data_json['JPY']
-#	current_price_BTC = current_price_data_json['BTC']
-	current_price_USD = current_price_data_json['USD']
-	current_price_EUR = current_price_data_json['EUR']
-	currency = collist.find_one({'symbol': currency})
+	api_id = currency['api_id']
+	info_api = "https://www.cryptocompare.com/api/data/coinsnapshotfullbyid/?id={api_id}"
+	info_url = info_api.format(api_id=api_id)
+	info_data = requests.get(info_url)
+	info_data_json = json.loads(info_data.text)
+	info_data = info_data_json['Data']
+	info_data_general = info_data["General"]
+
 	return render_template('currency.html',
 			currency=currency,
 			histoday=histoday,
-			current_price_data_json=current_price_data_json,
-			current_price_api_url=current_price_api_url,
-			current_price_data=current_price_data,
-			current_price_JPY=current_price_JPY,
-#			current_price_BTC=current_price_BTC,
-			current_price_USD=current_price_USD,
-			current_price_EUR=current_price_EUR)
+			info_data=info_data,
+			info_data_general=info_data_general
+			)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8080)

@@ -46,6 +46,15 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
     </div>
 </div>
 
+
+<div class="container">
+    <div class="row">
+        {{currency['api_id']}}
+        {{info_data_general['H1Text']}}
+    </div>
+</div>
+
+
 <div class="container">
     <div class="row">
         <div id="container" style="height: 400px; min-width: 310px"></div>
@@ -53,8 +62,6 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
 </div>
 
 <div class="container">
-
-
     <div class="row" id="basic-information">
         <div class="col-xs-12 col-6">
             <h2>{{currency['name']}}情報</h2>
@@ -62,25 +69,25 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
                 <dt class="col-sm-5">コード</dt>
                 <dd class="col-sm-7">{{currency['symbol']}}</dd>
                 <dt class="col-sm-5">アルゴリズム(Algorithm)</dt>
-                <dd class="col-sm-7">{{currency['symbol']}}</dd>
+                <dd class="col-sm-7">{{info_data_general['Algorithm']}}</dd>
                 <dt class="col-sm-5">開始日</dt>
-                <dd class="col-sm-7">a</dd>
+                <dd class="col-sm-7">{{info_data_general['StartDate']}}</dd>
                 <dt class="col-sm-5">承認方式(Proof of type)</dt>
-                <dd class="col-sm-7">a</dd>
+                <dd class="col-sm-7">{{info_data_general['ProofType']}}</dd>
                 <dt class="col-sm-5">採掘難易度の調整頻度(Difficulty Adjustment)</dt>
-                <dd class="col-sm-7">Block</dd>
+                <dd class="col-sm-7">{{info_data_general['DifficultyAdjustment']}}</dd>
                 <dt class="col-sm-5">採掘報酬減少率(Block reward reduction)</dt>
-                <dd class="col-sm-7">a</dd>
+                <dd class="col-sm-7">{{info_data_general['BlockRewardReduction']}}</dd>
                 <dt class="col-sm-5">ブロックタイム(Block Time)</dt>
-                <dd class="col-sm-7">ハッシュレート/秒(Hashrate/s)</dd>
-                <dt class="col-sm-5">H/S</dt>
-                <dd class="col-sm-7">a</dd>
+                <dd class="col-sm-7">{{info_data_general['BlockTime']}}</dd>
+                <dt class="col-sm-5">ハッシュレート秒(Hashrate/s)</dt>
+                <dd class="col-sm-7">{{info_data_general['NetHashesPerSecond']}}H/s</dd>
                 <dt class="col-sm-5">ブロック報酬(BlockReward)</dt>
-                <dd class="col-sm-7">BlockReward</dd>
+                <dd class="col-sm-7">{{info_data_general['BlockReward']}}</dd>
                 <dt class="col-sm-5">現在のコイン総量(TotalCoinsMined)</dt>
-                <dd class="col-sm-7">a</dd>
-                <dt class="col-sm-5">コイン供給上限(TotalCoinSupply)</dt>
-                <dd class="col-sm-7">a</dd>
+                <dd class="col-sm-7">{{info_data_general['TotalCoinsMined']}}</dd>
+                <dt class="col-sm-5">コイン供給上限(TotalCoinSupply)}}</dt>
+                <dd class="col-sm-7">{{info_data_general['TotalCoinSupply']}}</dd>
             </dl>
         </div>
         <div class="col-xs-12 col-6">
