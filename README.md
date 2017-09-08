@@ -79,7 +79,7 @@ Windows env
     run Mongodb
         Open command prompt
         rm data/mongod.lock
-        "C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath "C:\Users\lexio\Dropbox\BLTZ\data"
+        mongod --dbpath "C:\Users\lexio\Dropbox\BLTZ\data"
         that's only
 
 Change from csv to json

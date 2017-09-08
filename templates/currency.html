@@ -46,15 +46,6 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
     </div>
 </div>
 
-
-<div class="container">
-    <div class="row">
-        {{currency['api_id']}}
-        {{info_data_general['H1Text']}}
-    </div>
-</div>
-
-
 <div class="container">
     <div class="row">
         <div id="container" style="height: 400px; min-width: 310px"></div>
@@ -64,7 +55,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
 <div class="container">
     <div class="row" id="basic-information">
         <div class="col-xs-12 col-6">
-            <h2>{{currency['name']}}情報</h2>
+            <h2>{{currency['name']}}基本情報</h2>
             <dl class="row no-gutters">
                 <dt class="col-sm-5">コード</dt>
                 <dd class="col-sm-7">{{currency['symbol']}}</dd>
@@ -75,7 +66,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
                 <dt class="col-sm-5">承認方式(Proof of type)</dt>
                 <dd class="col-sm-7">{{info_data_general['ProofType']}}</dd>
                 <dt class="col-sm-5">採掘難易度の調整頻度(Difficulty Adjustment)</dt>
-                <dd class="col-sm-7">{{info_data_general['DifficultyAdjustment']}}</dd>
+                <dd class="col-sm-7">{{info_data_general['DifficultyAdjustment']}} Blocks</dd>
                 <dt class="col-sm-5">採掘報酬減少率(Block reward reduction)</dt>
                 <dd class="col-sm-7">{{info_data_general['BlockRewardReduction']}}</dd>
                 <dt class="col-sm-5">ブロックタイム(Block Time)</dt>
@@ -91,31 +82,85 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?a=e&filename=aapl-o
             </dl>
         </div>
         <div class="col-xs-12 col-6">
-            <h2>{{currency['name']}}通貨情報</h2>
+            <h2>{{currency['symbol']}}/JPY</h2>
             <dl class="row no-gutters ">
-                <dt class="col-sm-5">コード</dt>
-                <dd class="col-sm-7">{{currency['symbol']}}</dd>
-                <dt class="col-sm-5">コード</dt>
-                <dd class="col-sm-7">{{current_price_data_json}}</dd>
-                <dt class="col-sm-5">コード</dt>
-                <dd class="col-sm-7">{{current_price_api_url}}</dd>
                 <dt class="col-sm-5">最終取引価格(&yen;)</dt>
-                <dd class="col-sm-7">&yen;&nbsp;{{current_price_JPY}}</dd>
-                <dt class="col-sm-5">最終取引価格($)</dt>
-                <dd class="col-sm-7">$&nbsp;{{current_price_USD}}</dd>
-                <dt class="col-sm-5">最終取引価格(&euro;)</dt>
-                <dd class="col-sm-7">&euro;&nbsp;{{current_price_EUR}}</dd>
-                <dt class="col-sm-5">始値（24h）</dt>
-                <dd class="col-sm-7">&yen;&nbsp;OPEN24HOUR</dd>
-                <dt class="col-sm-5">高値（24h）</dt>
-                <dd class="col-sm-7">&yen;&nbsp;HIGH24HOUR</dd>
-                <dt class="col-sm-5">安値（24h）</dt>
-                <dd class="col-sm-7">&yen;&nbsp;LOW24HOUR</dd>
-                <dt class="col-sm-5">出来高(24h)</dt>
-                <dd class="col-sm-7">VOLUME24HOURTO</dd>
-                <dt class="col-sm-5">時価総額(Market Capitalization)</dt>
-                <dd class="col-sm-7">000</dd>
+                <dd class="col-sm-7">{{compare_data_jpy['PRICE']}}</dd>
+                <dt class="col-sm-5">24H変動(&yen;)</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['CHANGE24HOUR']}}({{compare_data_jpy['CHANGEPCT24HOUR']}}%)</dd>
+                <dt class="col-sm-5">始値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['OPEN24HOUR']}}</dd>
+                <dt class="col-sm-5">高値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['HIGH24HOUR']}}</dd>
+                <dt class="col-sm-5">安値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['LOW24HOUR']}}</dd>
+                <dt class="col-sm-5">出来高(24h){{currency['name']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['VOLUME24HOUR']}}</dd>
+                <dt class="col-sm-5">出来高(24h){{compare_data_jpy['TOSYMBOL']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['VOLUME24HOURTO']}}</dd>
+                <dt class="col-sm-5">直近取引出来高{{currency['name']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['LASTVOLUME']}}</dd>
+                <dt class="col-sm-5">直近取引出来高{{compare_data_jpy['TOSYMBOL']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['LASTVOLUMETO']}}</dd>
+                <dt class="col-sm-5">直近取引マーケット</dt>
+                <dd class="col-sm-7">{{compare_data_jpy['LASTMARKET']}}</dd>
             </dl>
+        </div>
+        <div class="col-xs-12 col-6">
+            <h2>{{currency['symbol']}}/USD</h2>
+            <dl class="row no-gutters ">
+                <dt class="col-sm-5">最終取引価格(&yen;)</dt>
+                <dd class="col-sm-7">{{compare_data_usd['PRICE']}}</dd>
+                <dt class="col-sm-5">24H変動(&yen;)</dt>
+                <dd class="col-sm-7">{{compare_data_usd['CHANGE24HOUR']}}({{compare_data_usd['CHANGEPCT24HOUR']}}%)</dd>
+                <dt class="col-sm-5">始値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_usd['OPEN24HOUR']}}</dd>
+                <dt class="col-sm-5">高値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_usd['HIGH24HOUR']}}</dd>
+                <dt class="col-sm-5">安値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_usd['LOW24HOUR']}}</dd>
+                <dt class="col-sm-5">出来高(24h){{currency['name']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_usd['VOLUME24HOUR']}}</dd>
+                <dt class="col-sm-5">出来高(24h){{compare_data_usd['TOSYMBOL']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_usd['VOLUME24HOURTO']}}</dd>
+                <dt class="col-sm-5">直近取引出来高{{currency['name']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_usd['LASTVOLUME']}}</dd>
+                <dt class="col-sm-5">直近取引出来高{{compare_data_usd['TOSYMBOL']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_usd['LASTVOLUMETO']}}</dd>
+                <dt class="col-sm-5">直近取引マーケット</dt>
+                <dd class="col-sm-7">{{compare_data_usd['LASTMARKET']}}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-12 col-6">
+            <h2>{{currency['symbol']}}/EUR</h2>
+            <dl class="row no-gutters ">
+                <dt class="col-sm-5">最終取引価格(&yen;)</dt>
+                <dd class="col-sm-7">{{compare_data_eur['PRICE']}}</dd>
+                <dt class="col-sm-5">24H変動(&yen;)</dt>
+                <dd class="col-sm-7">{{compare_data_eur['CHANGE24HOUR']}}({{compare_data_eur['CHANGEPCT24HOUR']}}%)</dd>
+                <dt class="col-sm-5">始値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_eur['OPEN24HOUR']}}</dd>
+                <dt class="col-sm-5">高値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_eur['HIGH24HOUR']}}</dd>
+                <dt class="col-sm-5">安値(24h)</dt>
+                <dd class="col-sm-7">{{compare_data_eur['LOW24HOUR']}}</dd>
+                <dt class="col-sm-5">出来高(24h){{currency['name']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_eur['VOLUME24HOUR']}}</dd>
+                <dt class="col-sm-5">出来高(24h){{compare_data_eur['TOSYMBOL']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_eur['VOLUME24HOURTO']}}</dd>
+                <dt class="col-sm-5">直近取引出来高{{currency['name']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_eur['LASTVOLUME']}}</dd>
+                <dt class="col-sm-5">直近取引出来高{{compare_data_eur['TOSYMBOL']}}換算</dt>
+                <dd class="col-sm-7">{{compare_data_eur['LASTVOLUMETO']}}</dd>
+                <dt class="col-sm-5">直近取引マーケット</dt>
+                <dd class="col-sm-7">{{compare_data_eur['LASTMARKET']}}</dd>
+            </dl>
+        </div>
+        <div class="col-xs-12 col-6">
+            {{compare_data}}
+        </div>
+        <div class="col-xs-12 col-6">
+            {{compare_data_jpy}}
         </div>
     </div>
 </div>
