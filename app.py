@@ -16,7 +16,9 @@ heading = "default heading"
 
 @app.route('/')
 def route():
-    currency = collist.find();
+    currency = collist.find().limit(10)
+
+
     return render_template('index.html', title=title, heading=heading, currency=currency)
 
 @app.route('/list')
@@ -34,9 +36,9 @@ def currency(currency):
 
     '''
     histoday = []
-    histo_api = "https://min-api.cryptocompare.com/data/histoday?fsym={fsym}&tsym=USD&limit={limit}&aggregate=3&e=CCCAGG"
+    histo_api = "https://min-api.cryptocompare.com/data/histoday?fsym={fsym}&tsym=USD&limit={limit}&aggregate=1&e=CCCAGG"
     fsym = currency['symbol']
-    limit = '10'
+    limit = '365'
     histo_api_url = histo_api.format(fsym=fsym, limit=limit)
     histo_data = requests.get(histo_api_url)
     histo_data_json = json.loads(histo_data.text)

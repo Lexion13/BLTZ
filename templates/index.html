@@ -4,6 +4,42 @@
 title desuyo-
 {% endblock%}
 {% block body %}
+<div class="container tablesorter" id="top-table">
+    <div class="row">
+
+        <table class="table table-inverse">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                    <th>Market Cap</th>
+                    <th>Change(24h)</th>
+                    <th>Volume(24h)</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in currency %}
+                <tr>
+                    <td>
+                        <img class="rounded-circle" src="/static/images/{{c['image']}}" alt="{{c['name']}}" width="40" height="40px">
+                        &nbsp;{{c['name']}}
+                    </td>
+                    <td>{{c['symbol']}}</td>
+                    <td>$100</td>
+                    <td>$10,000</td>
+                    <td>10%</td>
+                    <td>123,456</td>
+                    <td><a class="btn btn-secondary" href="{{ c['symbol'] }}"  role="button">View details »</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         {% for c in currency %}
@@ -18,3 +54,8 @@ title desuyo-
     </div>
 </div>
 {% endblock %}
+<script type="text/javascript">
+    $(function(){
+        $("#top-table").tablesorter();
+    });
+</script>
