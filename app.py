@@ -12,14 +12,34 @@ collist = db.list
 app = Flask(__name__)
 title = "default title"
 heading = "default heading"
-#modify=ObjectId()
 
 @app.route('/')
 def route():
-    currency = collist.find().limit(10)
+    currency = collist.find().limit(1)
 
+    fsyms = []
+    tsyms = "JPY"
 
-    return render_template('index.html', title=title, heading=heading, currency=currency)
+    for fsyms_array in currency:
+        fsyms_one = fsyms_array["symbol"]
+        fsyms_one = str(fsyms_one)
+        fsyms.append(fsyms_one)
+
+    fsyms = ','.join(fsyms)
+
+    basic_info_api = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms={fsyms}&tsyms={tsyms}"
+    basic_info_url = basic_info_api.format(fsyms=fsyms,tsyms=tsyms)
+    basic_info_data = requests.get(basic_info_url)
+    basic_info_json = json.loads(basic_info_data.text)
+    basic_info_data = basic_info_json
+    basic_info_data = basic_info_data['DISPLAY']
+
+    return render_template('index.html',
+            title=title,
+            heading=heading,
+            currency=currency,
+            basic_info_data=basic_info_data
+    )
 
 @app.route('/list')
 def lists():
