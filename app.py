@@ -36,7 +36,7 @@ def currency(currency):
     histoday = []
     histo_api = "https://min-api.cryptocompare.com/data/histoday?fsym={fsym}&tsym=USD&limit={limit}&aggregate=3&e=CCCAGG"
     fsym = currency['symbol']
-    limit = '60'
+    limit = '10'
     histo_api_url = histo_api.format(fsym=fsym, limit=limit)
     histo_data = requests.get(histo_api_url)
     histo_data_json = json.loads(histo_data.text)
@@ -49,7 +49,8 @@ def currency(currency):
         cl = e["close"]
         vf = e["volumefrom"]
         vt = e["volumeto"]
-        histoday.append([ti,op,hi,lo,cl])
+        histoday.append([ti,op,hi,lo,cl,vt])
+    histoday = json.dumps(histoday)
 
 
     '''
