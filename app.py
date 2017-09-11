@@ -34,6 +34,8 @@ def route():
     basic_info_data = basic_info_json
     basic_info_data = basic_info_data['DISPLAY']
 
+    currency = collist.find().limit(10)
+
     return render_template('index.html',
             title=title,
             heading=heading,
