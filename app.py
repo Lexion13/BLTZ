@@ -15,7 +15,7 @@ heading = "default heading"
 
 @app.route('/')
 def route():
-    currency = collist.find().limit(1)
+    currency = collist.find().limit(10)
 
     fsyms = []
     tsyms = "JPY"
@@ -47,7 +47,7 @@ def lists():
     currency = collist.find()
     return render_template('list.html', title=title, heading=heading, currency=currency)
 
-@app.route('/<currency>')
+@app.route('/currency/<currency>')
 def currency(currency):
     currency = collist.find_one({'symbol': currency})
 
