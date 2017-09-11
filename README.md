@@ -1,5 +1,5 @@
 run
-    python3 test.py
+    python3 app.py
     
 db structure
 
@@ -13,12 +13,6 @@ db structure
             connections = 8
             algorithm = SHA-256
 
-        collection = bitcoin
-            date = 20170101
-            open = 1000
-            hight = 1100
-            low = 900
-            close = 1050
 
 mongodb run
 
