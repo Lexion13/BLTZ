@@ -49,7 +49,7 @@ def lists():
     currency = collist.find()
     return render_template('list.html', title=title, heading=heading, currency=currency)
 
-@app.route('/currency/<currency>')
+@app.route('/<currency>')
 def currency(currency):
     currency = collist.find_one({'symbol': currency})
 
