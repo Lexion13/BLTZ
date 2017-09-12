@@ -30,7 +30,7 @@ mongodb export as csv
     if you wanna export cryptocurrency list collections.
     $mongoexport --db cryptocurrency --csv --collection list --out export.csv --fields _id,symbol,name,algorithm
     if you wanna import cryptocurrency list collections.
-    $mongoimport -d cryptocurrency -c list --type csv --file import.csv --headerline
+    $mongoimport -d cryptocurrency -c list --type csv --file data.csv --headerline
 
 (kinda)db seed 
 

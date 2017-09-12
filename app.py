@@ -34,13 +34,33 @@ def route():
     basic_info_data = basic_info_json
     basic_info_data = basic_info_data['DISPLAY']
 
+    price_data = {}
+    for key, value in basic_info_data.items():
+        price_data[key] = value['JPY']['PRICE']
+
+    mktcap_data = {}
+    for key, value in basic_info_data.items():
+        mktcap_data[key] = value['JPY']['MKTCAP']
+
+    changepct24_data = {}
+    for key, value in basic_info_data.items():
+        changepct24_data[key] = value['JPY']['CHANGEPCT24HOUR']
+
+    vol24h_data = {}
+    for key, value in basic_info_data.items():
+        vol24h_data[key] = value['JPY']['VOLUME24HOUR']
+
     currency = collist.find().limit(10)
 
     return render_template('index.html',
             title=title,
             heading=heading,
             currency=currency,
-            basic_info_data=basic_info_data
+            basic_info_data=basic_info_data,
+            price_data=price_data,
+            mktcap_data=mktcap_data,
+            changepct24_data=changepct24_data,
+            vol24h_data=vol24h_data
     )
 
 @app.route('/list')

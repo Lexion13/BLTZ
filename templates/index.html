@@ -26,16 +26,17 @@ title desuyo-
             </thead>
             <tbody>
                 {% for c in currency %}
+                {% set c_symbol = c['symbol'] %}
                 <tr>
                     <td>
                         <img class="rounded-circle" src="/static/images/{{c['image']}}" alt="{{c['name']}}" width="40" height="40px">
                         &nbsp;{{c['name']}}
                     </td>
                     <td>{{c['symbol']}}</td>
-                    <td>{{basic_info_data[c['symbol']]}}</td>
-                    <td>$10,000</td>
-                    <td>10%</td>
-                    <td>123,456</td>
+                    <td>{{ price_data[c_symbol] }}</td>
+                    <td>{{ mktcap_data[c_symbol] }}</td>
+                    <td>{{ changepct24_data[c_symbol] }}%</td>
+                    <td>{{ vol24h_data[c_symbol] }}</td>
                     <td><a class="btn btn-secondary" href="/{{ c['symbol'] }}"  role="button">View details »</a></td>
                 </tr>
                 {% endfor %}
