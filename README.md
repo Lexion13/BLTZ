@@ -76,4 +76,7 @@ Windows env
         mongod --dbpath "C:\Users\lexio\Dropbox\BLTZ\data"
         that's only
 
-Change from csv to json
+
+Create requirements.txt
+
+    $pip freeze > requirements.txt
