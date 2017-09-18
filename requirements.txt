@@ -43,3 +43,4 @@ urllib3==1.21.1
 webcolors==1.7
 Werkzeug==0.12.2
 zope.interface==4.4.2
+gunicorn
