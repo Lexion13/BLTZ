@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../heroku-basic-flask" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../py" vcs="Git" />
   </component>
 </project>

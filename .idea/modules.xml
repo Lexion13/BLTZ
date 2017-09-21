@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BLTZ.iml" filepath="$PROJECT_DIR$/.idea/BLTZ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../heroku-basic-flask/.idea/heroku-basic-flask.iml" filepath="$PROJECT_DIR$/../heroku-basic-flask/.idea/heroku-basic-flask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../py/.idea/py.iml" filepath="$PROJECT_DIR$/../py/.idea/py.iml" />
     </modules>
   </component>
 </project>

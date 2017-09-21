@@ -136,7 +136,7 @@ def currency(currency):
             compare_data_jpy=compare_data_jpy,
             compare_data_usd=compare_data_usd,
             compare_data_eur=compare_data_eur,
-            compare_data_btc=compare_data_btc
+            compare_data_btc=compare_data_btci
             )
 
 if __name__ == "__main__":
