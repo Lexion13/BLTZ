@@ -141,7 +141,7 @@ def currency(currency):
 
 if __name__ == "__main__":
 #    app.run(debug=True, host="localhost", port=8080)
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=True)
 # Careful with the debug mode..
 
 
