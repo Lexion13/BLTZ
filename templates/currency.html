@@ -6,7 +6,7 @@ $(function(){
 
 $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-ohlcv.json&callback=?', function (data) {
 
-    // split the data set into ohlc and volume
+// split the data set into ohlc and volume
 //    var data = (?{{histoday}});
     var data = {{histoday}};
     console.log(data);
@@ -46,7 +46,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-ohlcv
         },
 
         title: {
-            text: 'AAPL Historical'
+            text: 'Historical Data'
         },
 
         yAxis: [{
@@ -114,7 +114,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-ohlcv
 
 <div class="container">
     <div class="row">
-        <div id="container" style="height: 400px; min-width: 310px"></div>
+        <div id="container"></div>
     </div>
 </div>
 

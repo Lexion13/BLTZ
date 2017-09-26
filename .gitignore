@@ -9,3 +9,4 @@
 build/                                  # build/ディレクトリ以下の全てのファイルを無視
 doc/*.txt                               # doc/ディレクトリ以下の.txtで終わるファイルを無視
 /instance
+*.lock

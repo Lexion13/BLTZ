@@ -127,7 +127,9 @@ def currency(currency):
         compare_data_btc = compare_data['DISPLAY'][currency['symbol']]['BTC']
     else:
         compare_data_btc = "nothing"
+
     return render_template('currency.html',
+            fsym=fsym,
             currency=currency,
             histoday=histoday,
             info_data=info_data,
@@ -136,7 +138,7 @@ def currency(currency):
             compare_data_jpy=compare_data_jpy,
             compare_data_usd=compare_data_usd,
             compare_data_eur=compare_data_eur,
-            compare_data_btc=compare_data_btci
+            compare_data_btc=compare_data_btc
             )
 
 if __name__ == "__main__":
