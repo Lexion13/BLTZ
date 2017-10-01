@@ -6,6 +6,7 @@ import json
 import requests
 from urllib.parse import urlparse
 
+
 '''
 for connect to mongodb heroku
 '''
