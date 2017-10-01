@@ -4,9 +4,28 @@ from bson.objectid import ObjectId # For ObjectId to work
 import os
 import json
 import requests
+from urllib.parse import urlparse
 
+'''
+for connect to mongodb heroku
+'''
+MONGO_URL = os.environ.get('mongodb://lexion13:1211333s@ds033096.mlab.com:33096/heroku_w8gqb97v')
+if MONGO_URL:
+    # Get a connection
+    connection = MongoClient(MONGO_URL)
+    # Get the database
+    db = connection[urlparse(MONGO_URL).path[1:]]
+else:
+    # Not on an app with the MongoHQ add-on, do some localhost action
+    connection = MongoClient('localhost', 27017)
+    db = connection.cryptocurrency
+
+
+
+'''
 client = MongoClient('localhost', 27017)    #Configure the connection to the database
 db = client.cryptocurrency
+'''
 collist = db.list
 
 app = Flask(__name__)
@@ -143,7 +162,8 @@ def currency(currency):
 
 if __name__ == "__main__":
 #    app.run(debug=True, host="localhost", port=8080)
-    app.run(debug=True, use_reloader=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, use_reloader=True, port=port)
 # Careful with the debug mode..
 
 
