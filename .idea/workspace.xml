@@ -5,9 +5,9 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../py/original/Levenshtein/diff_article.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../py/original/SEO/get_image_file_size.py" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../py/original/SEO/get_image_file_size_light.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/diagnostic.data/metrics.2017-10-01T14-59-57Z-00000" afterPath="$PROJECT_DIR$/data/diagnostic.data/metrics.2017-10-01T14-59-57Z-00000" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/diagnostic.data/metrics.interim" afterPath="$PROJECT_DIR$/data/diagnostic.data/metrics.interim" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../py/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../py/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../py/original/craft_item_complete_checker.py" afterPath="$PROJECT_DIR$/../py/original/craft_item_complete_checker.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../py/original/craft_item_detail_scraping.py" afterPath="$PROJECT_DIR$/../py/original/craft_item_detail_scraping.py" />
@@ -48,8 +48,8 @@
       <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+            <state relative-caret-position="27">
+              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -716,8 +716,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+        <state relative-caret-position="27">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
