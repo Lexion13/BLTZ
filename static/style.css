@@ -23,6 +23,9 @@
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
 }
+#basic-information dd{
+    padding-left: 20px;
+}
 #top-table tr td,
 #top-table tr th{
     vertical-align: middle;
