@@ -23,7 +23,7 @@ mongodb run
     $./mongod
 
 
-mongodb export as csv
+mongodb export or import as csv
 
     examples
     $mongoexport --db fd --csv --collection port --out export.csv --fields _id,symbol,name,algorithm
@@ -32,7 +32,12 @@ mongodb export as csv
     if you wanna import cryptocurrency list collections.
     $mongoimport -d cryptocurrency -c list --type csv --file data.csv --headerline
 
-(kinda)db seed 
+mongoimport to heroku mongohq
+
+    exmaples
+    $mongoimport -h ds033096.mlab.com:33096 -d heroku_w8gqb97v -c list -u lexion13 -p 1211333s --file data.csv --type csv --headerline
+
+(kinda)db seed
 
     $mongo
     >use cryptocurrency;
@@ -80,3 +85,4 @@ Windows env
 Create requirements.txt
 
     $pip freeze > requirements.txt
+
