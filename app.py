@@ -34,7 +34,7 @@ heading = "default heading"
 
 @app.route('/')
 def route():
-    currency = collist.find().limit(10)
+    currency = collist.find().limit(100)
 
     fsyms = []
     tsyms = "JPY"
