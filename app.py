@@ -7,10 +7,10 @@ import requests
 from urllib.parse import urlparse
 
 
+
 '''
 for connect to mongodb heroku
 '''
-MONGO_URL = os.environ.get('mongodb://lexion13:1211333s@ds033096.mlab.com:33096/heroku_w8gqb97v')
 MONGO_URL = "mongodb://lexion13:1211333s@ds033096.mlab.com:33096/heroku_w8gqb97v"
 if MONGO_URL:
     # Get a connection
