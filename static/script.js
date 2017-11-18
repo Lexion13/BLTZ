@@ -1,9 +1,13 @@
 $(function(){
-    var hoge = "nothing";
-    alert(hoge);
-    if (hoge == "nothing"){
-        console.log("majide");
-    }else{
-        console.log("dejima");
-    }
-});
+    flg = true;
+    $("#menu-trigger").on('click', function(){
+        if(flg){
+            $("#nav").slideDown();
+            flg = false;
+        }else{
+            $("#nav").slideUp();
+            flg = true;
+        }
+    });
+
+})

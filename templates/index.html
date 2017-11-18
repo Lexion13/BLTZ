@@ -4,62 +4,37 @@
 BLTZ 仮想通過チャート一覧
 {% endblock %}
 {% block body %}
-<div class="container">
-
-</div>
-<div class="container tablesorter" id="top-table">
-    <div class="row">
-
-        <table class="table table-inverse">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Symbol</th>
-                    <th>Price</th>
-                    <th>Market Cap</th>
-                    <th>Change(24h)</th>
-                    <th>Volume(24h)</th>
-                    <th>Link</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for c in currency %}
-                {% set c_symbol = c['symbol'] %}
-                <tr>
-                    <td>
-                        <img class="rounded-circle" src="/static/images/{{c['image']}}" alt="{{c['name']}}" width="40" height="40px">
-                        &nbsp;{{c['name']}}
-                    </td>
-                    <td>{{c['symbol']}}</td>
-                    <td>{{ price_data[c_symbol] }}</td>
-                    <td>{{ mktcap_data[c_symbol] }}</td>
-                    <td>{{ changepct24_data[c_symbol] }}%</td>
-                    <td>{{ vol24h_data[c_symbol] }}</td>
-                    <td><a class="btn btn-secondary" href="/{{ c['symbol'] }}"  role="button">View details »</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
+<table class="table table-inverse table-responsive" id="currency-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Market Cap</th>
+            <th>Change(24h)</th>
+            <th>Volume(24h)</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for c in currency %}
-        <div class="col-lg-4">
-            <img class="rounded-circle" src="/static/images/{{c['image']}}" alt="{{c['name']}}" width="140" height="140">
-            <h2>{{ c["name"] }}</h2>
-            <h3>{{ c["symbol"] }}</h3>
-            <p>{{ c["description"] }}</p>
-            <p><a class="btn btn-secondary" href='{{ c["symbol"] }}'  role="button">View details »</a></p>
-        </div>
+        {% set c_symbol = c['symbol'] %}
+        <tr>
+            <td class="text-center">
+                <a href="/currency/{{ c['symbol'] }}">
+                    <img class="img-responsive thumbnail-symbol" src="/static/images/{{c['image']}}" alt="{{c['name']}}">
+                    &nbsp;{{c['name']}}
+                </a>
+            </td>
+            <td class="text-center">{{c['symbol']}}</td>
+            <td>{{ price_data[c_symbol] }}</td>
+            <td>{{ mktcap_data[c_symbol] }}</td>
+            <td>{{ changepct24_data[c_symbol] }}%</td>
+            <td>{{ vol24h_data[c_symbol] }}</td>
+            <td><a class="btn btn-secondary" href="/currency/{{ c['symbol'] }}"  role="button">View details »</a></td>
+        </tr>
         {% endfor %}
-    </div>
-</div>
+    </tbody>
+</table>
+
 {% endblock %}
-<script type="text/javascript">
-    $(function(){
-        $("#top-table").tablesorter();
-    });
-</script>
