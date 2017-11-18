@@ -2,6 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../To-Do-List---Flask-MongoDB-Example" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../flask_lexion13_playroom" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../flask_my_playroom" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../heroku-basic-flask" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../py" vcs="Git" />
   </component>

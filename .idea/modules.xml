@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BLTZ.iml" filepath="$PROJECT_DIR$/.idea/BLTZ.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../heroku-basic-flask/.idea/heroku-basic-flask.iml" filepath="$PROJECT_DIR$/../heroku-basic-flask/.idea/heroku-basic-flask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../To-Do-List---Flask-MongoDB-Example/.idea/To-Do-List---Flask-MongoDB-Example.iml" filepath="$PROJECT_DIR$/../To-Do-List---Flask-MongoDB-Example/.idea/To-Do-List---Flask-MongoDB-Example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../flask_lexion13_playroom/.idea/flask_my_playroom.iml" filepath="$PROJECT_DIR$/../flask_lexion13_playroom/.idea/flask_my_playroom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../flaskr/.idea/flaskr.iml" filepath="$PROJECT_DIR$/../flaskr/.idea/flaskr.iml" />
+      <module fileurl="file://C:\Users\lexio\Dropbox\heroku-basic-flask\.idea\heroku-basic-flask.iml" filepath="C:\Users\lexio\Dropbox\heroku-basic-flask\.idea\heroku-basic-flask.iml" />
       <module fileurl="file://$PROJECT_DIR$/../py/.idea/py.iml" filepath="$PROJECT_DIR$/../py/.idea/py.iml" />
     </modules>
   </component>

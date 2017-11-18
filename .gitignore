@@ -1,4 +1,4 @@
-.DS_Store                               # .DS_Storeファイルを無視(Macの一時ファイル)
+﻿.DS_Store                               # .DS_Storeファイルを無視(Macの一時ファイル)
 *.log                                   # .logで終わるファイルを無視(Rails等のログファイル)
 *.sqlite                                # .sqliteで終わるファイルを無視(SQLite3のDBファイル)
 *.swp                                   # .swpで終わるファイルを無視(Vimの一時ファイル)
@@ -11,3 +11,4 @@ doc/*.txt                               # doc/ディレクトリ以下の.txtで
 /instance
 /data
 *.lock
+.idea/

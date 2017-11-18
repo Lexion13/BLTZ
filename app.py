@@ -6,8 +6,6 @@ import json
 import requests
 from urllib.parse import urlparse
 
-
-
 '''
 for connect to mongodb heroku
 '''
@@ -79,7 +77,7 @@ def route():
             price_data=price_data,
             mktcap_data=mktcap_data,
             changepct24_data=changepct24_data,
-            vol24h_data=vol24h_data
+            vol24h_data=vol24h_data,
     )
 
 @app.route('/list')
