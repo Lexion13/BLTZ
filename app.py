@@ -159,6 +159,45 @@ def currency(currency):
             compare_data_btc=compare_data_btc
             )
 
+
+@app.route('/getdata')
+def getdata():
+    currencies = collist.find().limit(100)
+    symbols = []
+    api_ids = []
+
+
+    for currency in currencies:
+        api_id = currency['api_id']
+        api_ids.append(api_id)
+
+    for api_id in api_ids:
+        base_api_url = "https://www.cryptocompare.com/api/data/coinsnapshotfullbyid/?id={api_id}"
+        api_url = base_api_url.format(api_id=api_id)
+        api_data = requests.get(api_url)
+        api_data = json.loads(api_data.text)
+        # total coin mined * price
+        totalcoinsmined = api_data['Data']['General']
+
+
+
+    return render_template('getdata.html',
+                           symbols=symbols,
+                           api_ids=api_ids,
+                           totalcoinsmined=totalcoinsmined)
+
+
+# get data from api
+
+
+
+# insert data into mongodb
+
+# send or display complete message as something email or something else.
+
+
+
+
 if __name__ == "__main__":
 #    app.run(debug=True, host="localhost", port=8080)
     port = int(os.environ.get('PORT', 5000))
