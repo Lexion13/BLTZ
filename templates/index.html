@@ -7,7 +7,7 @@ BLTZ 仮想通過チャート一覧
 <table class="table table-inverse table-responsive" id="currency-table">
     <thead>
         <tr>
-            <th>Name1</th>
+            <th>Name</th>
             <th>Symbol</th>
             <th>Price</th>
             <th>Market Cap</th>
@@ -17,21 +17,21 @@ BLTZ 仮想通過チャート一覧
         </tr>
     </thead>
     <tbody>
-        {% for c in currency %}
-        {% set c_symbol = c['symbol'] %}
+        {% for key, value in currency.items() %}
+
         <tr>
             <td class="text-center">
-                <a href="/currency/{{ c['symbol'] }}">
-                    <img class="img-responsive thumbnail-symbol" src="/static/images/{{c['image']}}" alt="{{c['name']}}">
-                    &nbsp;{{c['name']}}
+                <a href="/currency/{{ key }}">
+                    <img class="img-responsive thumbnail-symbol" src="/static/images/{{value['image']}}" alt="{{value['name']}}">
+                    &nbsp;{{value['name']}}
                 </a>
             </td>
-            <td class="text-center">{{c['symbol']}}</td>
-            <td>{{ price_data[c_symbol] }}</td>
-            <td>{{ mktcap_data[c_symbol] }}</td>
-            <td>{{ changepct24_data[c_symbol] }}%</td>
+            <td class="text-center">{{key}}</td>
+            <td>{{ price_data[key] }}</td>
+            <td>{{ mktcap_data[key] }}</td>
+            <td>{{ changepct24_data[key] }}%</td>
             <td>{{ vol24h_data[c_symbol] }}</td>
-            <td><a class="btn btn-secondary" href="/currency/{{ c['symbol'] }}"  role="button">View details »</a></td>
+            <td><a class="btn btn-secondary" href="/currency/{{ key }}"  role="button">View details »</a></td>
         </tr>
         {% endfor %}
     </tbody>

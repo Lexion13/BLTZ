@@ -1,95 +1,69 @@
 from flask import Flask, render_template,request,redirect,url_for # For flask implementation
-from pymongo import MongoClient # Database connector
-from bson.objectid import ObjectId # For ObjectId to work
 import os
 import json
 import requests
-from urllib.parse import urlparse
+import db
+import api
 
-'''
-for connect to mongodb heroku
-'''
-MONGO_URL = "mongodb://lexion13:1211333s@ds033096.mlab.com:33096/heroku_w8gqb97v"
-if MONGO_URL:
-    # Get a connection
-    connection = MongoClient(MONGO_URL)
-    # Get the database
-    db = connection[urlparse(MONGO_URL).path[1:]]
-else:
-    # Not on an app with the MongoHQ add-on, do some localhost action
-    connection = MongoClient('localhost', 27017)
-    db = connection.cryptocurrency
-
-'''
-client = MongoClient('localhost', 27017)    #Configure the connection to the database
-db = client.cryptocurrency
-
-'''
-collist = db.list
+# import sys
+# sys.path.append('/Applications/PyCharm.app/Contents/debug-eggs/pycharm-debug.egg')
+# import pydevd
+# pydevd.settrace('localhost', port=5000, stdoutToServer=True, stderrToServer=True)
 
 app = Flask(__name__)
+
+dm = db.DataModels()
+
 title = "default title"
 heading = "default heading"
 
 @app.route('/')
 def route():
-    currency = collist.find().limit(10)
 
+    view_data = {}
     fsyms = []
     tsyms = "JPY"
 
-    for fsyms_array in currency:
-        fsyms_one = fsyms_array["symbol"]
-        fsyms_one = str(fsyms_one)
-        fsyms.append(fsyms_one)
+    for data in dm.get_coin_list(0, 20):
+        view_data[data['coin']] = {'image': data['image'], 'name': data['name']}
+        fsyms.append(data['coin'])
 
     fsyms = ','.join(fsyms)
 
-    basic_info_api = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms={fsyms}&tsyms={tsyms}"
-    basic_info_url = basic_info_api.format(fsyms=fsyms,tsyms=tsyms)
-    basic_info_data = requests.get(basic_info_url)
-    basic_info_json = json.loads(basic_info_data.text)
-    basic_info_data = basic_info_json
-    basic_info_data = basic_info_data['DISPLAY']
+    coin_data = api.get_details(fsyms, tsyms)
 
     price_data = {}
-    for key, value in basic_info_data.items():
-        price_data[key] = value['JPY']['PRICE']
-
     mktcap_data = {}
-    for key, value in basic_info_data.items():
-        mktcap_data[key] = value['JPY']['MKTCAP']
-
     changepct24_data = {}
-    for key, value in basic_info_data.items():
-        changepct24_data[key] = value['JPY']['CHANGEPCT24HOUR']
-
     vol24h_data = {}
-    for key, value in basic_info_data.items():
+
+    for key, value in coin_data.items():
+        price_data[key] = value['JPY']['PRICE']
+        mktcap_data[key] = value['JPY']['MKTCAP']
+        changepct24_data[key] = value['JPY']['CHANGEPCT24HOUR']
         vol24h_data[key] = value['JPY']['VOLUME24HOUR']
 
-    currency = collist.find().limit(10)
-
     return render_template('index.html',
-            title=title,
-            heading=heading,
-            currency=currency,
-            basic_info_data=basic_info_data,
-            price_data=price_data,
-            mktcap_data=mktcap_data,
-            changepct24_data=changepct24_data,
-            vol24h_data=vol24h_data,
-    )
+                           title=title,
+                           heading=heading,
+                           currency=view_data,
+                           coin_data=coin_data,
+                           price_data=price_data,
+                           mktcap_data=mktcap_data,
+                           changepct24_data=changepct24_data,
+                           vol24h_data=vol24h_data)
+
 
 @app.route('/list')
 def lists():
     #Display the all currency
-    currency = collist.find()
+    currency = db.get_coin_list()
     return render_template('list.html', title=title, heading=heading, currency=currency)
+
 
 @app.route('/currency/<currency>')
 def currency(currency):
-    currency = collist.find_one({'symbol': currency})
+    currency = db.get_one(currency)
 
     '''
     Get price histo
@@ -162,7 +136,7 @@ def currency(currency):
 
 @app.route('/getdata')
 def getdata():
-    currencies = collist.find().limit(100)
+    currencies = db.get_coin_list()
     symbols = []
     api_ids = []
 
@@ -179,8 +153,6 @@ def getdata():
         # total coin mined * price
         totalcoinsmined = api_data['Data']['General']
 
-
-
     return render_template('getdata.html',
                            symbols=symbols,
                            api_ids=api_ids,
@@ -194,9 +166,6 @@ def getdata():
 # insert data into mongodb
 
 # send or display complete message as something email or something else.
-
-
-
 
 if __name__ == "__main__":
 #    app.run(debug=True, host="localhost", port=8080)
