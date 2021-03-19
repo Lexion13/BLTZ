@@ -14,7 +14,7 @@ funcparserlib==0.3.6
 idna==2.5
 imagesize==0.7.1
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 MarkupSafe==1.0
 nwdiag==1.0.4
 olefile==0.44
