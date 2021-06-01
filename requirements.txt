@@ -38,7 +38,7 @@ sphinxcontrib-nwdiag==0.9.5
 sphinxcontrib-seqdiag==0.8.5
 sphinxcontrib-websupport==1.0.1
 sphinxjp.themecore==0.2.0
-urllib3==1.21.1
+urllib3==1.26.5
 webcolors==1.7
 Werkzeug==0.12.2
 zope.interface==4.4.2
